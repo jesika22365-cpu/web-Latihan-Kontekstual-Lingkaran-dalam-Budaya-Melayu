@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Latihan Kontekstual | Lingkaran dalam Budaya Melayu (Tudung Saji Pandan)</title>
+<style>
+:root{
+  --coklat-tua:#6D4C2F;--coklat:#8B6840;--coklat-muda:#C9A876;--pasir:#EFE3CB;--pasir-muda:#F8F1E1;
+  --coklat-aksen:#A9744A;--gold:#D4A537;
+  --gray:#6B6258;--gray-dark:#3D352B;--white:#fff;
+  --hijau-ok:#2E7D32;--hijau-bg:#E8F5E9;--hijau-border:#A5D6A7;
+  --merah-err:#B71C1C;--merah-bg:#FFEBEE;--merah-border:#FFCDD2;
+  --kuning-partial:#8A6D1F;--kuning-bg:#FFF3D6;--kuning-border:#E8C766;
+  --radius:12px;--shadow:0 4px 18px rgba(109,76,47,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:linear-gradient(135deg,var(--pasir-muda) 0%,var(--pasir) 50%,#E9D9B8 100%);min-height:100vh;color:var(--gray-dark)}
+.wrap{max-width:720px;margin:0 auto;padding:18px 14px 50px}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--coklat-tua) 0%,var(--coklat) 55%,var(--coklat-aksen) 100%);border-radius:var(--radius);padding:18px 20px;margin-bottom:16px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.hero-bg{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:70px;opacity:.10;pointer-events:none;line-height:1}
+.hero-top{display:flex;justify-content:flex-start;align-items:flex-start;gap:10px;margin-bottom:8px}
+.hero-tag{display:inline-block;background:rgba(212,165,55,.25);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:.6px;padding:3px 10px;border-radius:20px}
+.hero h1{font-size:18px;font-weight:700;color:#fff;line-height:1.4;margin-bottom:6px}
+.hero p{font-size:12.5px;color:rgba(255,255,255,.8);line-height:1.5}
+.hero-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.hb{font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
+
+/* IDENTITAS */
+.id-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;margin-bottom:16px;border-left:6px solid var(--coklat)}
+.id-card h3{color:var(--coklat-tua);font-size:13px;text-transform:uppercase;letter-spacing:.7px;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.id-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.id-field{display:flex;flex-direction:column;gap:4px}
+.id-field label{font-size:11px;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.id-field input{border:2px solid var(--pasir);border-radius:8px;padding:8px 12px;font-size:13px;font-family:inherit;background:var(--pasir-muda);transition:.2s}
+.id-field input:focus{outline:none;border-color:var(--coklat-aksen);background:#fff}
+@media(max-width:480px){.id-grid{grid-template-columns:1fr}}
+
+/* PROGRESS */
+.progress-bar{background:#fff;border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;box-shadow:var(--shadow)}
+.pb-label{font-size:12px;color:var(--gray);display:flex;justify-content:space-between;margin-bottom:6px}
+.pb-track{background:var(--pasir);border-radius:20px;height:8px;overflow:hidden}
+.pb-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--coklat),var(--coklat-aksen));transition:width .4s ease;width:0%}
+
+/* KONTEKS BUDAYA */
+.context-card{border-radius:var(--radius);background:#fff;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow)}
+.ctx-header{background:var(--pasir);border-bottom:2px solid var(--coklat-muda);padding:12px 18px;display:flex;align-items:center;gap:8px}
+.ctx-header span{font-size:12px;font-weight:700;color:var(--coklat-tua);letter-spacing:.4px;text-transform:uppercase}
+.ctx-body{padding:16px 18px}
+.ctx-body p{font-size:13.5px;color:var(--gray-dark);line-height:1.7;margin-bottom:10px}
+.ctx-body p:last-child{margin-bottom:0}
+.ctx-highlight{background:var(--pasir-muda);border-left:4px solid var(--coklat-aksen);border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:var(--gray-dark);line-height:1.6;margin:10px 0}
+.ctx-highlight b{color:var(--coklat-tua);font-weight:700}
+
+/* ILUSTRASI */
+.tudung-visual{display:flex;justify-content:center;align-items:flex-end;gap:22px;padding:14px 0;flex-wrap:wrap}
+.tudung-fig{text-align:center}
+.tudung-label{font-size:12px;color:var(--gray);margin-top:4px}
+.tudung-val{font-size:12.5px;font-weight:700;color:var(--coklat-tua)}
+.rumus-chip{display:inline-flex;align-items:center;gap:5px;background:var(--pasir);border:1.5px solid var(--coklat-muda);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--gray-dark);margin:3px}
+.rumus-chip b{color:var(--coklat-tua);font-weight:700}
+
+/* SOAL */
+.soal-list{display:flex;flex-direction:column;gap:14px}
+.soal-card{border-radius:var(--radius);background:#fff;overflow:hidden;box-shadow:var(--shadow);border:2px solid transparent;transition:border-color .2s}
+.soal-card.answered{border-color:var(--hijau-border)}
+.soal-card.wrong-ans{border-color:var(--merah-border)}
+.soal-head{padding:14px 18px;display:flex;align-items:flex-start;gap:12px;border-bottom:1.5px solid var(--pasir)}
+.soal-num{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:1px;background:var(--coklat);color:#fff}
+.soal-text{font-size:13.5px;color:var(--gray-dark);line-height:1.65;flex:1}
+.soal-body{padding:14px 18px;display:flex;flex-direction:column;gap:10px}
+.field-label{font-size:11.5px;color:var(--gray);margin-bottom:4px;font-weight:600}
+.field-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.inp{border:2px solid var(--pasir);border-radius:8px;padding:7px 11px;font-size:13px;font-family:inherit;color:var(--gray-dark);background:var(--pasir-muda);width:100%;transition:.2s}
+.inp:focus{outline:none;border-color:var(--coklat-aksen);background:#fff}
+.inp-sm{width:130px}
+.inp-xs{width:85px}
+.unit{font-size:12.5px;color:var(--gray);white-space:nowrap}
+.step-box{background:var(--pasir-muda);border-radius:8px;padding:10px 12px}
+.jawaban-akhir{background:var(--hijau-bg);border-radius:8px;padding:10px 12px;border:1.5px solid var(--hijau-border)}
+.jawaban-akhir .field-label{color:var(--hijau-ok)}
+textarea.inp{resize:vertical;min-height:60px;line-height:1.5}
+
+.cek-btn{padding:8px 20px;border-radius:8px;border:none;background:var(--coklat);color:#fff;font-size:13px;font-family:inherit;cursor:pointer;transition:.2s;font-weight:600}
+.cek-btn:hover{background:var(--coklat-tua)}
+
+.feedback{border-radius:8px;padding:10px 14px;font-size:13px;line-height:1.6;display:none;margin-top:4px}
+.feedback.show{display:block}
+.feedback.ok{background:var(--hijau-bg);color:var(--hijau-ok);border:1.5px solid var(--hijau-border)}
+.feedback.err{background:var(--merah-bg);color:var(--merah-err);border:1.5px solid var(--merah-border)}
+.feedback.partial{background:var(--kuning-bg);color:var(--kuning-partial);border:1.5px solid var(--kuning-border)}
+
+/* REFLEKSI */
+.refleksi-card{border-radius:var(--radius);background:#fff;padding:16px 18px;margin-top:16px;box-shadow:var(--shadow)}
+.refleksi-card h3{font-size:14.5px;font-weight:700;color:var(--coklat-tua);margin-bottom:12px}
+.refleksi-item{margin-bottom:12px}
+.refleksi-item p{font-size:13px;color:var(--gray-dark);margin-bottom:6px;line-height:1.5;font-weight:600}
+.radio-group{display:flex;gap:8px;flex-wrap:wrap}
+.radio-group label{display:flex;align-items:center;gap:5px;font-size:12.5px;color:var(--gray-dark);cursor:pointer;padding:5px 12px;border-radius:20px;border:1.5px solid var(--pasir);transition:.15s}
+.radio-group label:hover{border-color:var(--coklat-muda);background:var(--pasir-muda)}
+.radio-group input[type=radio]{accent-color:var(--coklat)}
+
+/* SUBMIT & SCORE */
+.submit-row{display:flex;justify-content:center;margin-top:18px}
+.submit-btn{padding:12px 36px;border-radius:10px;background:var(--coklat-tua);color:#fff;border:none;font-size:15px;font-family:inherit;cursor:pointer;transition:.2s;font-weight:700;box-shadow:0 4px 14px rgba(109,76,47,.35)}
+.submit-btn:hover{background:#54381F;transform:translateY(-1px)}
+
+.score-panel{border-radius:var(--radius);background:#fff;overflow:hidden;box-shadow:var(--shadow);display:none;margin-top:18px}
+.score-panel.show{display:block}
+.score-head{background:linear-gradient(135deg,var(--coklat-tua),var(--coklat));padding:20px 22px;text-align:center;color:#fff}
+.score-head h2{font-size:18px;font-weight:700;margin-bottom:4px}
+.score-head p{font-size:12.5px;opacity:.85}
+.score-circle{width:84px;height:84px;border-radius:50%;border:3px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:10px auto;background:rgba(255,255,255,.1)}
+.score-num{font-size:28px;font-weight:700;color:var(--gold);line-height:1}
+.score-lbl{font-size:10px;color:rgba(255,255,255,.7)}
+.score-body{padding:18px 20px}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--pasir);font-size:13px}
+.score-row:last-child{border-bottom:none}
+.score-row .lbl{color:var(--gray)}
+.score-row .val{font-weight:700}
+.grade-badge{display:inline-block;padding:4px 14px;border-radius:14px;font-size:12.5px;font-weight:700;color:#fff}
+
+footer{text-align:center;padding:18px 10px 6px;font-size:12px;color:var(--gray)}
+@media(max-width:480px){.field-row{flex-direction:column;align-items:stretch}.inp-sm,.inp-xs{width:100%}.hero-top{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg">🏺</div>
+  <div class="hero-top">
+    <span class="hero-tag">Latihan Kontekstual</span>
+  </div>
+  <h1>Lingkaran dalam Budaya Melayu<br>(Tudung Saji Pandan)</h1>
+  <p>Terapkan konsep keliling dan luas lingkaran melalui konteks nyata kerajinan tradisional Melayu dari Lingga, Kepulauan Riau</p>
+  <div class="hero-badges">
+    <span class="hb">SMP Kelas VIII</span>
+    <span class="hb">Kurikulum Merdeka</span>
+  </div>
+</div>
+
+<!-- IDENTITAS SISWA -->
+<div class="id-card">
+  <h3>📋 Identitas Peserta Didik</h3>
+  <div class="id-grid">
+    <div class="id-field"><label>Nama Siswa</label><input type="text" id="nama-siswa" placeholder="Tulis nama lengkap kamu..."></div>
+    <div class="id-field"><label>Kelas</label><input type="text" id="kelas-siswa" placeholder="Contoh: VIII-A"></div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-bar">
+  <div class="pb-label">
+    <span>Progress pengerjaan</span>
+    <span id="prog-txt">0 dari 5 soal dijawab</span>
+  </div>
+  <div class="pb-track"><div class="pb-fill" id="prog-fill"></div></div>
+</div>
+
+<!-- KONTEKS BUDAYA -->
+<div class="context-card">
+  <div class="ctx-header">
+    <span>🗺️ Konteks Budaya — Tudung Saji Pandan Lingga</span>
+  </div>
+  <div class="ctx-body">
+    <p>
+      <b>Tudung saji pandan</b> adalah kerajinan tangan tradisional yang berasal dari <b>Kabupaten Lingga, Kepulauan Riau</b>. Dibuat dari anyaman daun pandan laut yang dikeringkan, tudung saji ini memiliki bentuk kerucut dengan <b>alas berbentuk lingkaran sempurna</b>.
+    </p>
+    <p>
+      Kerajinan ini telah diwariskan turun-temurun oleh masyarakat Melayu Lingga dan menjadi identitas budaya daerah yang bernilai tinggi. Kini, tudung saji pandan Lingga bahkan dipasarkan ke berbagai daerah dan menjadi oleh-oleh khas Kepulauan Riau.
+    </p>
+    <div class="ctx-highlight">
+      Pengrajin tudung saji perlu menghitung keliling dan luas alasnya dengan tepat agar bahan pandan yang digunakan tidak terbuang sia-sia — inilah penerapan nyata matematika dalam kehidupan sehari-hari pengrajin.
+    </div>
+  </div>
+</div>
+
+<!-- ILUSTRASI -->
+<div class="context-card">
+  <div class="ctx-header">
+    <span>📐 Ilustrasi & Ukuran Tudung Saji</span>
+  </div>
+  <div class="ctx-body">
+    <div class="tudung-visual">
+
+      <div class="tudung-fig">
+        <svg width="110" height="110" viewBox="0 0 110 110">
+          <circle cx="55" cy="55" r="42" fill="#F8F1E1" stroke="#8B6840" stroke-width="2.5"/>
+          <circle cx="55" cy="55" r="32" fill="none" stroke="#C9A876" stroke-width="1" stroke-dasharray="3,4"/>
+          <circle cx="55" cy="55" r="20" fill="none" stroke="#C9A876" stroke-width="1" stroke-dasharray="3,4"/>
+          <circle cx="55" cy="55" r="3" fill="#6D4C2F"/>
+          <text x="59" y="51" font-size="9" fill="#6D4C2F" font-family="sans-serif">O</text>
+          <line x1="55" y1="55" x2="97" y2="55" stroke="#6D4C2F" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <text x="68" y="50" font-size="9" fill="#6D4C2F" font-family="sans-serif">r = 21 cm</text>
+        </svg>
+        <div class="tudung-label">Tudung Saji Pak Burhan</div>
+        <div class="tudung-val">r = 21 cm</div>
+      </div>
+
+      <div class="tudung-fig">
+        <svg width="92" height="92" viewBox="0 0 92 92">
+          <circle cx="46" cy="46" r="34" fill="#F8F1E1" stroke="#A9744A" stroke-width="2.5"/>
+          <circle cx="46" cy="46" r="24" fill="none" stroke="#C9A876" stroke-width="1" stroke-dasharray="3,4"/>
+          <circle cx="46" cy="46" r="13" fill="none" stroke="#C9A876" stroke-width="1" stroke-dasharray="3,4"/>
+          <circle cx="46" cy="46" r="3" fill="#A9744A"/>
+          <text x="50" y="42" font-size="9" fill="#A9744A" font-family="sans-serif">O</text>
+          <line x1="46" y1="46" x2="80" y2="46" stroke="#A9744A" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <text x="14" y="86" font-size="9" fill="#A9744A" font-family="sans-serif">d = 56 cm</text>
+        </svg>
+        <div class="tudung-label">Tudung Saji Bu Aminah</div>
+        <div class="tudung-val">d = 56 cm</div>
+      </div>
+
+      <div class="tudung-fig">
+        <svg width="78" height="78" viewBox="0 0 78 78">
+          <circle cx="39" cy="39" r="28" fill="#F8F1E1" stroke="#6D4C2F" stroke-width="2.5"/>
+          <circle cx="39" cy="39" r="18" fill="none" stroke="#C9A876" stroke-width="1" stroke-dasharray="3,4"/>
+          <circle cx="39" cy="39" r="3" fill="#6D4C2F"/>
+          <text x="26" y="70" font-size="9" fill="#6D4C2F" font-family="sans-serif">K = 88 cm</text>
+        </svg>
+        <div class="tudung-label">Tudung Saji Mak Cik Rosma</div>
+        <div class="tudung-val">K = 88 cm</div>
+      </div>
+
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:8px">
+      <span class="rumus-chip"><b>K = 2πr</b> atau <b>K = πd</b></span>
+      <span class="rumus-chip"><b>L = πr²</b></span>
+      <span class="rumus-chip">π = <b>22/7</b> (jika habis ÷7) atau <b>3,14</b></span>
+      <span class="rumus-chip"><b>r = d ÷ 2</b></span>
+    </div>
+  </div>
+</div>
+
+<!-- SOAL-SOAL -->
+<div class="soal-list">
+
+  <!-- SOAL 1 -->
+  <div class="soal-card" id="sc1">
+    <div class="soal-head">
+      <div class="soal-num">1</div>
+      <div class="soal-text">
+        Pak Burhan, seorang pengrajin tudung saji pandan di Desa Resun, Lingga, baru saja menyelesaikan satu tudung saji dengan jari-jari alas 21 cm. Sebelum dijual, ia ingin memasang anyaman pandan tambahan di sekeliling pinggiran alasnya agar lebih kuat. Berapa <b>panjang anyaman pandan</b> yang harus disiapkan Pak Burhan? <span style="color:var(--gray);font-size:12.5px">(π = 22/7)</span>
+      </div>
+    </div>
+    <div class="soal-body">
+      <div class="step-box">
+        <div class="field-label">Langkah penyelesaian</div>
+        <div class="field-row" style="margin-bottom:8px">
+          <span class="unit">Diketahui: r =</span>
+          <input class="inp inp-xs" id="s1-r" placeholder="..."> <span class="unit">cm, π =</span>
+          <input class="inp inp-xs" id="s1-pi" placeholder="...">
+        </div>
+        <div class="field-row">
+          <span class="unit">K = 2πr = 2 ×</span>
+          <input class="inp inp-xs" id="s1-pi2" placeholder="...">
+          <span class="unit">×</span>
+          <input class="inp inp-xs" id="s1-r2" placeholder="...">
+          <span class="unit">= ...</span>
+        </div>
+      </div>
+      <div class="jawaban-akhir">
+        <div class="field-label">Jawaban akhir</div>
+        <div class="field-row">
+          <span class="unit">K =</span>
+          <input class="inp inp-sm" id="s1-ans" placeholder="hasil..."> <span class="unit">cm</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end"><button class="cek-btn" onclick="cek1()">Cek Jawaban</button></div>
+      <div class="feedback" id="fb1"></div>
+    </div>
+  </div>
+
+  <!-- SOAL 2 -->
+  <div class="soal-card" id="sc2">
+    <div class="soal-head">
+      <div class="soal-num">2</div>
+      <div class="soal-text">
+        Bu Aminah, tetangga Pak Burhan, ingin menghias permukaan alas tudung sajinya (jari-jari 21 cm) dengan kain perca bermotif Melayu agar tampak lebih cantik untuk dijual saat Festival Budaya Lingga. Berapa <b>luas kain</b> yang harus dibeli Bu Aminah? <span style="color:var(--gray);font-size:12.5px">(π = 22/7)</span>
+      </div>
+    </div>
+    <div class="soal-body">
+      <div class="step-box">
+        <div class="field-label">Langkah penyelesaian</div>
+        <div class="field-row">
+          <span class="unit">L = πr² =</span>
+          <input class="inp inp-xs" id="s2-pi" placeholder="π"> <span class="unit">×</span>
+          <input class="inp inp-xs" id="s2-r" placeholder="r"> <span class="unit">² =</span>
+          <input class="inp inp-xs" id="s2-r2" placeholder="r²">
+          <span class="unit">× ...</span>
+        </div>
+      </div>
+      <div class="jawaban-akhir">
+        <div class="field-label">Jawaban akhir</div>
+        <div class="field-row">
+          <span class="unit">L =</span>
+          <input class="inp inp-sm" id="s2-ans" placeholder="hasil..."> <span class="unit">cm²</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end"><button class="cek-btn" onclick="cek2()">Cek Jawaban</button></div>
+      <div class="feedback" id="fb2"></div>
+    </div>
+  </div>
+
+  <!-- SOAL 3 -->
+  <div class="soal-card" id="sc3">
+    <div class="soal-head">
+      <div class="soal-num">3</div>
+      <div class="soal-text">
+        Bu Aminah memiliki tudung saji lain yang diameter alasnya 56 cm. Sebelum membeli kain pelapis baru, ia perlu tahu <b>(a)</b> berapa jari-jari tudung saji tersebut, dan <b>(b)</b> berapa luas permukaan alasnya agar tidak salah membeli kain. <span style="color:var(--gray);font-size:12.5px">(π = 22/7)</span>
+      </div>
+    </div>
+    <div class="soal-body">
+      <div class="step-box">
+        <div class="field-label">a) Mencari jari-jari</div>
+        <div class="field-row">
+          <span class="unit">r = d ÷ 2 =</span>
+          <input class="inp inp-xs" id="s3-d" placeholder="d..."> <span class="unit">÷ 2 =</span>
+          <input class="inp inp-xs" id="s3-r" placeholder="r..."> <span class="unit">cm</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="field-label">b) Menghitung luas</div>
+        <div class="field-row">
+          <span class="unit">L = πr² =</span>
+          <input class="inp inp-xs" id="s3-pi" placeholder="π"> <span class="unit">×</span>
+          <input class="inp inp-xs" id="s3-r2" placeholder="r²"> <span class="unit">= ...</span>
+        </div>
+      </div>
+      <div class="jawaban-akhir">
+        <div class="field-label">Jawaban akhir</div>
+        <div class="field-row" style="flex-wrap:wrap;gap:8px">
+          <span class="unit">r =</span><input class="inp inp-xs" id="s3-ans-r" placeholder="..."> <span class="unit">cm,</span>
+          <span class="unit">L =</span><input class="inp inp-sm" id="s3-ans-l" placeholder="..."> <span class="unit">cm²</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end"><button class="cek-btn" onclick="cek3()">Cek Jawaban</button></div>
+      <div class="feedback" id="fb3"></div>
+    </div>
+  </div>
+
+  <!-- SOAL 4 -->
+  <div class="soal-card" id="sc4">
+    <div class="soal-head">
+      <div class="soal-num">4</div>
+      <div class="soal-text">
+        Mak Cik Rosma menjual tudung saji di Pasar Daik, Lingga. Seorang pembeli mengukur keliling alas tudung sajinya menggunakan tali, hasilnya 88 cm. Pembeli itu ingin tahu <b>(a)</b> jari-jari, <b>(b)</b> diameter, dan <b>(c)</b> luas permukaan alas tudung saji tersebut sebelum membandingkannya dengan tudung saji lain. <span style="color:var(--gray);font-size:12.5px">(π = 22/7)</span>
+      </div>
+    </div>
+    <div class="soal-body">
+      <div class="step-box">
+        <div class="field-label">a) Cari r dari rumus keliling</div>
+        <div class="field-row" style="flex-wrap:wrap;gap:6px">
+          <span class="unit">K = 2πr →</span>
+          <input class="inp inp-xs" id="s4-k" placeholder="K..."> <span class="unit">= 2 × 22/7 × r →</span>
+          <span class="unit">r =</span>
+          <input class="inp inp-xs" id="s4-r" placeholder="r..."> <span class="unit">cm</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="field-label">b) Cari diameter</div>
+        <div class="field-row">
+          <span class="unit">d = 2r = 2 ×</span>
+          <input class="inp inp-xs" id="s4-r2" placeholder="r..."> <span class="unit">=</span>
+          <input class="inp inp-xs" id="s4-d" placeholder="d..."> <span class="unit">cm</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="field-label">c) Hitung luas</div>
+        <div class="field-row">
+          <span class="unit">L = πr² = 22/7 ×</span>
+          <input class="inp inp-xs" id="s4-r3" placeholder="r²"> <span class="unit">=</span>
+          <input class="inp inp-sm" id="s4-l" placeholder="L..."> <span class="unit">cm²</span>
+        </div>
+      </div>
+      <div class="jawaban-akhir">
+        <div class="field-label">Jawaban akhir</div>
+        <div class="field-row" style="flex-wrap:wrap;gap:8px">
+          <span class="unit">r =</span><input class="inp inp-xs" id="s4-ans-r" placeholder="..."><span class="unit">cm,</span>
+          <span class="unit">d =</span><input class="inp inp-xs" id="s4-ans-d" placeholder="..."><span class="unit">cm,</span>
+          <span class="unit">L =</span><input class="inp inp-sm" id="s4-ans-l" placeholder="..."><span class="unit">cm²</span>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:flex-end"><button class="cek-btn" onclick="cek4()">Cek Jawaban</button></div>
+      <div class="feedback" id="fb4"></div>
+    </div>
+  </div>
+
+  <!-- SOAL 5 -->
+  <div class="soal-card" id="sc5">
+    <div class="soal-head">
+      <div class="soal-num">5</div>
+      <div class="soal-text">
+        Koperasi Pengrajin Lingga memproduksi 3 ukuran tudung saji pandan untuk dijual ke wisatawan: kecil (diameter 14 cm), sedang (diameter 28 cm), dan besar (diameter 42 cm). Untuk menentukan harga jual, ketua koperasi ingin tahu berapa kali lipat luas permukaan tudung saji <b>besar</b> dibandingkan tudung saji <b>kecil</b>, supaya harga yang ditetapkan sesuai dengan banyaknya bahan pandan yang digunakan. <span style="color:var(--gray);font-size:12.5px">(π = 22/7)</span>
+      </div>
+    </div>
+    <div class="soal-body">
+      <div class="step-box">
+        <div class="field-label">Hitung luas masing-masing tudung saji</div>
+        <div class="field-row" style="margin-bottom:7px">
+          <span class="unit">L kecil (r = 7 cm): L =</span>
+          <input class="inp inp-sm" id="s5-lk" placeholder="..."> <span class="unit">cm²</span>
+        </div>
+        <div class="field-row" style="margin-bottom:7px">
+          <span class="unit">L sedang (r = 14 cm): L =</span>
+          <input class="inp inp-sm" id="s5-ls" placeholder="..."> <span class="unit">cm²</span>
+        </div>
+        <div class="field-row">
+          <span class="unit">L besar (r = 21 cm): L =</span>
+          <input class="inp inp-sm" id="s5-lb" placeholder="..."> <span class="unit">cm²</span>
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="field-label">Berapa kali lipat luas tudung besar dibanding tudung kecil?</div>
+        <div class="field-row">
+          <span class="unit">L besar ÷ L kecil =</span>
+          <input class="inp inp-sm" id="s5-div" placeholder="hasil..."> <span class="unit">kali lipat</span>
+        </div>
+      </div>
+      <div class="jawaban-akhir">
+        <div class="field-label">Jelaskan: mengapa hasilnya seperti itu? (kaitkan dengan perbandingan diameter/jari-jari)</div>
+        <textarea class="inp" id="s5-kes" rows="2" placeholder="Karena diameter tudung besar adalah ... kali diameter tudung kecil, maka luasnya menjadi ... kali lipat, sebab luas berbanding lurus dengan kuadrat jari-jari (r²)..."></textarea>
+      </div>
+      <div style="display:flex;justify-content:flex-end"><button class="cek-btn" onclick="cek5()">Cek Jawaban</button></div>
+      <div class="feedback" id="fb5"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- REFLEKSI -->
+<div class="refleksi-card">
+  <h3>Refleksi Diri</h3>
+  <div class="refleksi-item">
+    <p>1. Seberapa mudah soal-soal ini bagimu?</p>
+    <div class="radio-group">
+      <label><input type="radio" name="r1" value="3"> Sangat mudah</label>
+      <label><input type="radio" name="r1" value="2"> Cukup mudah</label>
+      <label><input type="radio" name="r1" value="1"> Masih sulit</label>
+    </div>
+  </div>
+  <div class="refleksi-item">
+    <p>2. Bagian mana yang paling sulit bagimu?</p>
+    <div class="radio-group">
+      <label><input type="radio" name="r2" value="k"> Soal 1</label>
+      <label><input type="radio" name="r2" value="l"> Soal 2</label>
+      <label><input type="radio" name="r2" value="r"> Soal 3 & 4</label>
+      <label><input type="radio" name="r2" value="h"> Soal 5</label>
+    </div>
+  </div>
+  <div class="refleksi-item">
+    <p>3. Apakah konteks tudung saji pandan Lingga membuatmu lebih paham?</p>
+    <div class="radio-group">
+      <label><input type="radio" name="r3" value="3"> Ya, sangat membantu</label>
+      <label><input type="radio" name="r3" value="2"> Cukup membantu</label>
+      <label><input type="radio" name="r3" value="1"> Biasa saja</label>
+    </div>
+  </div>
+  <div class="refleksi-item" style="margin-bottom:0">
+    <p>4. Apa yang ingin kamu pelajari lebih lanjut?</p>
+    <textarea class="inp" id="refleksi-4" rows="2" placeholder="Tuliskan pendapatmu..."></textarea>
+  </div>
+</div>
+
+<!-- SUBMIT -->
+<div class="submit-row">
+  <button class="submit-btn" onclick="submitAll()">Kirim & Lihat Nilai</button>
+</div>
+
+<!-- SCORE -->
+<div class="score-panel" id="score-panel">
+  <div class="score-head">
+    <div class="score-circle">
+      <span class="score-num" id="skor-num">—</span>
+      <span class="score-lbl">Nilai</span>
+    </div>
+    <h2 id="skor-grade">—</h2>
+    <p id="skor-msg"></p>
+  </div>
+  <div class="score-body" id="skor-detail"></div>
+</div>
+
+<footer>
+  Latihan Kontekstual Lingkaran — Tudung Saji Pandan Lingga, Kepulauan Riau<br>
+  Universitas Maritim Raja Ali Haji (UMRAH) | Kurikulum Merdeka
+</footer>
+
+</div>
+
+<script>
+let done={s1:false,s2:false,s3:false,s4:false,s5:false};
+
+function updateProg(){
+  const n=Object.values(done).filter(Boolean).length;
+  document.getElementById('prog-fill').style.width=(n/5*100)+'%';
+  document.getElementById('prog-txt').textContent=n+' dari 5 soal dijawab';
+}
+function fb(id,type,msg){
+  const el=document.getElementById(id);
+  el.className='feedback '+type+' show';
+  el.innerHTML=msg;
+}
+function markCard(id,ok){
+  const c=document.getElementById(id);
+  c.classList.remove('answered','wrong-ans');
+  c.classList.add(ok?'answered':'wrong-ans');
+}
+
+// SOAL 1 — K = 132 cm
+function cek1(){
+  const ans=parseFloat(document.getElementById('s1-ans').value);
+  const ok=Math.abs(ans-132)<1;
+  done.s1=ok; updateProg(); markCard('sc1',ok);
+  if(ok) fb('fb1','ok','Benar! K = 2 × 22/7 × 21 = 2 × 66 = <b>132 cm</b>. Pak Burhan perlu menyiapkan 132 cm anyaman pandan.');
+  else fb('fb1','err','Belum tepat. K = 2πr = 2 × 22/7 × 21 = 2 × 66 = <b>132 cm</b>. Coba periksa kembali perhitunganmu.');
+}
+
+// SOAL 2 — L = 1386 cm²
+function cek2(){
+  const ans=parseFloat(document.getElementById('s2-ans').value);
+  const ok=Math.abs(ans-1386)<2;
+  done.s2=ok; updateProg(); markCard('sc2',ok);
+  if(ok) fb('fb2','ok','Benar! L = 22/7 × 21² = 22/7 × 441 = 22 × 63 = <b>1.386 cm²</b>. Bu Aminah perlu membeli kain seluas 1.386 cm².');
+  else fb('fb2','err','Belum tepat. L = πr² = 22/7 × 21² = 22/7 × 441 = <b>1.386 cm²</b>. Ingat: 21² = 441.');
+}
+
+// SOAL 3 — r=28, L=2464
+function cek3(){
+  const r=parseFloat(document.getElementById('s3-ans-r').value);
+  const l=parseFloat(document.getElementById('s3-ans-l').value);
+  const okR=Math.abs(r-28)<1;
+  const okL=Math.abs(l-2464)<2;
+  done.s3=okR&&okL; updateProg(); markCard('sc3',done.s3);
+  if(done.s3) fb('fb3','ok','Benar! r = 56 ÷ 2 = <b>28 cm</b>, L = 22/7 × 28² = 22/7 × 784 = 22 × 112 = <b>2.464 cm²</b>.');
+  else if(okR) fb('fb3','partial','Jari-jari sudah benar (28 cm)! Periksa lagi luasnya: 22/7 × 28² = <b>2.464 cm²</b>.');
+  else fb('fb3','err','Coba dari awal. r = d ÷ 2 = 56 ÷ 2 = <b>28 cm</b>. Lalu L = 22/7 × 28² = <b>2.464 cm²</b>.');
+}
+
+// SOAL 4 — r=14, d=28, L=616
+function cek4(){
+  const r=parseFloat(document.getElementById('s4-ans-r').value);
+  const d=parseFloat(document.getElementById('s4-ans-d').value);
+  const l=parseFloat(document.getElementById('s4-ans-l').value);
+  const okR=Math.abs(r-14)<1, okD=Math.abs(d-28)<1, okL=Math.abs(l-616)<2;
+  done.s4=okR&&okD&&okL; updateProg(); markCard('sc4',done.s4);
+  const hint='K=2πr → 88=2×22/7×r → r=88×7÷44=<b>14 cm</b>, d=2×14=<b>28 cm</b>, L=22/7×196=<b>616 cm²</b>.';
+  if(done.s4) fb('fb4','ok','Tepat sekali! '+hint);
+  else if(okR&&okD) fb('fb4','partial','Jari-jari dan diameter sudah benar! L = 22/7 × 14² = 22/7 × 196 = <b>616 cm²</b>.');
+  else if(okR) fb('fb4','partial','Jari-jari benar (14 cm)! d = 2 × 14 = <b>28 cm</b>. L = 22/7 × 196 = <b>616 cm²</b>.');
+  else fb('fb4','err','Dari K = 2πr: 88 = 44r/7, r = 88 × 7 ÷ 44 = <b>14 cm</b>. '+hint);
+}
+
+// SOAL 5 — Lk=154, Ls=616, Lb=1386, rasio=9
+function cek5(){
+  const lk=parseFloat(document.getElementById('s5-lk').value);
+  const ls=parseFloat(document.getElementById('s5-ls').value);
+  const lb=parseFloat(document.getElementById('s5-lb').value);
+  const div=parseFloat(document.getElementById('s5-div').value);
+  const kes=document.getElementById('s5-kes').value.trim();
+  const okLk=Math.abs(lk-154)<2, okLb=Math.abs(lb-1386)<2;
+  const okDiv=Math.abs(div-9)<0.5;
+  const okKes=kes.length>15;
+  done.s5=okLk&&okLb&&okDiv&&okKes; updateProg(); markCard('sc5',done.s5);
+  const penjelasan='Karena diameter tudung besar (42 cm) adalah <b>3 kali</b> diameter tudung kecil (14 cm), maka jari-jarinya juga 3 kali lebih besar. Karena luas berbanding lurus dengan <b>kuadrat jari-jari (r²)</b>, maka luasnya menjadi 3² = <b>9 kali lipat</b> lebih besar.';
+  if(done.s5)
+    fb('fb5','ok','Sempurna! L kecil = <b>154 cm²</b>, L sedang = <b>616 cm²</b>, L besar = <b>1.386 cm²</b>. Rasio = 1.386 ÷ 154 = <b>9 kali lipat</b>. '+penjelasan);
+  else if(okLk&&okLb&&okDiv)
+    fb('fb5','partial','Perhitungan angkamu sudah benar! Tambahkan penjelasan yang lebih lengkap pada bagian alasan. '+penjelasan);
+  else
+    fb('fb5','err','Petunjuk: r kecil = 7 cm, sedang = 14 cm, besar = 21 cm (separuh dari diameter). L = 22/7 × r². L kecil = <b>154 cm²</b>, L sedang = <b>616 cm²</b>, L besar = <b>1.386 cm²</b>. Rasio = <b>9 kali lipat</b>. '+penjelasan);
+}
+
+function submitAll(){
+  const total=Object.values(done).filter(Boolean).length;
+  const skor=Math.round(total/5*100);
+  let grade,msg,gc;
+  if(skor===100){grade='A — Sempurna';msg='Luar biasa! Kamu menguasai semua konsep lingkaran dengan sangat baik.';gc='#2E7D32'}
+  else if(skor>=80){grade='B — Sangat Baik';msg='Hampir sempurna! Periksa kembali soal yang belum benar.';gc='#A9744A'}
+  else if(skor>=60){grade='C — Cukup Baik';msg='Cukup baik! Ulangi rumus keliling dan luas, lalu coba lagi.';gc='#8A6D1F'}
+  else{grade='D — Perlu Latihan';msg='Jangan menyerah! Baca ulang rumus dan coba kerjakan satu per satu.';gc='#B71C1C'}
+
+  document.getElementById('skor-num').textContent=skor;
+  document.getElementById('skor-grade').innerHTML='<span class="grade-badge" style="background:'+gc+'">'+grade+'</span>';
+  document.getElementById('skor-msg').textContent=msg;
+
+  const det=document.getElementById('skor-detail');
+  const namaS=document.getElementById('nama-siswa').value||'(belum diisi)';
+  const kelasS=document.getElementById('kelas-siswa').value||'(belum diisi)';
+  const labels=['Soal 1','Soal 2','Soal 3','Soal 4','Soal 5'];
+  const keys=['s1','s2','s3','s4','s5'];
+  det.innerHTML=
+    '<div class="score-row"><span class="lbl">Nama</span><span class="val">'+namaS+'</span></div>'+
+    '<div class="score-row"><span class="lbl">Kelas</span><span class="val">'+kelasS+'</span></div>'+
+    keys.map((k,i)=>`<div class="score-row"><span class="lbl">${labels[i]}</span><span class="val" style="color:${done[k]?'#2E7D32':'#B71C1C'}">${done[k]?'Benar':'Perlu diperbaiki'}</span></div>`).join('')+
+    '<div class="score-row" style="margin-top:6px;border-top:1.5px solid var(--pasir);padding-top:12px"><span class="lbl" style="font-weight:700">Nilai Akhir</span><span class="val" style="font-size:17px;color:'+gc+'">'+skor+' / 100</span></div>';
+
+  const p=document.getElementById('score-panel');
+  p.classList.add('show');
+  p.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
